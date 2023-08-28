@@ -1,0 +1,136 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: #f4f4f4;
+    overflow-y: auto;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    gap: 10px;
+}
+
+label {
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+} 
+
+button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    height: 120px;
+    position: fixed;
+    top: 0;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.login-form {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+}
+
+.logout-button {
+    cursor: pointer;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #FF5733;
+    color: white;
+}
+
+.logout-button:hover {
+    background-color: #E43F00;
+}
+
+.main-content {
+    background-color: #f4f4f4;
+    padding: 30px 0;
+}
+
+.table-container {
+    max-height: 500px;
+    overflow-y: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+div[data-table-container] {
+    max-width: 90%;
+    margin: auto;
+    margin-top: 130px;
+    padding: 20px 10px 10px;
+    
+}
+
+.data-table {
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 4px 0;
+}
+
+.data-table th, .data-table td {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: calc(100% / 6);
+    height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.data-table button[mat-button] {
+    margin: 0;
+    padding: 6px 12px;
+    width: 80%;
+}
+
+.filter-input-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    margin-bottom: 2px;
+    font-size: 14px;
+}
+
+.filter-action {
+    display: flex;
+    justify-content: center;
+}

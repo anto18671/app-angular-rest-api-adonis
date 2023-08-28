@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+
+<body>
+    <div *ngIf="isLoggedIn" class="header-container">
+        <h1>Demo Application</h1>
+        <button (click)="logout()" class="logout-button">Logout</button>
+    </div>
+    <div *ngIf="!isLoggedIn" class="login-container">
+      <div class="login-form" style="width: 400px;">
+        <label>Email:</label>
+        <input [(ngModel)]="email" type="email">
+        <label>Password:</label>
+        <input [(ngModel)]="password" type="password">
+        <button (click)="login()">Login</button>
+        <button (click)="openUserCreationDialog()">Create User</button>
+      </div>
+    </div>
+    
+    <div class="main-content" *ngIf="isLoggedIn">
+      <div data-table-container>
+        <div class="filter-input-container">
+            <div class="filter-input">
+                <label>ID:</label>
+                <input [(ngModel)]="filterId" (keyup)="applyFilter()" type="text">
+            </div>
+            <div class="filter-input">
+                <label>UID:</label>
+                <input [(ngModel)]="filterUID" (keyup)="applyFilter()" type="text">
+            </div>
+            <div class="filter-input">
+                <label>Brand:</label>
+                <input [(ngModel)]="filterBrand" (keyup)="applyFilter()" type="text">
+            </div>
+            <div class="filter-input">
+                <label>Equipment:</label>
+                <input [(ngModel)]="filterEquipment" (keyup)="applyFilter()" type="text">
+            </div>
+            <div class="filter-action" style="grid-column: span 2; margin-top: 22px;">
+                <button mat-button (click)="addItem()">Add</button>
+            </div>
+        </div>
+        <div class="table-container">
+          <table mat-table [dataSource]="dataSource" class="data-table">
+
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+              </ng-container>
+            
+              <ng-container matColumnDef="uid">
+                <th mat-header-cell *matHeaderCellDef> UID </th>
+                <td mat-cell *matCellDef="let row"> {{row.uid}} </td>
+              </ng-container>
+            
+              <ng-container matColumnDef="brand">
+                <th mat-header-cell *matHeaderCellDef> Brand </th>
+                <td mat-cell *matCellDef="let row"> {{row.brand}} </td>
+              </ng-container>
+            
+              <ng-container matColumnDef="equipment">
+                <th mat-header-cell *matHeaderCellDef> Equipment </th>
+                <td mat-cell *matCellDef="let row"> {{row.equipment}} </td>
+              </ng-container>
+            
+              <ng-container matColumnDef="edit">
+                  <th mat-header-cell *matHeaderCellDef> Edit </th>
+                  <td mat-cell *matCellDef="let row">
+                    <button mat-button (click)="editItem(row)">Edit</button>
+                  </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="delete">
+                  <th mat-header-cell *matHeaderCellDef> Delete </th>
+                  <td mat-cell *matCellDef="let row">
+                    <button mat-button (click)="deleteItem(row.id)">Delete</button>
+                  </td>
+              </ng-container>
+    
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </table>
+        </div>
+      </div>
+    </div>
+</body>

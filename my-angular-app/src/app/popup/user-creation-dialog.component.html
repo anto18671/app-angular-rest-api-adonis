@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create User</title>
+</head>
+
+<body>
+  <div>
+    <h2>Create User</h2>
+    <p style="font-size:12px;">Le champ email doit être en format XXXX@XXXX.XXX pour être valide.</p>
+    <form (ngSubmit)="createUser()">
+        <label>Email:</label>
+        <input [(ngModel)]="newUser.email" type="email" name="email" required>
+        <label>Password:</label>
+        <input [(ngModel)]="newUser.password" type="password" name="password" required>
+        <button type="submit">Create User</button>
+        <button type="button" class="cancel-button" (click)="closeDialog()">Cancel</button>
+    </form>
+  </div>
+</body>
+
+</html>
