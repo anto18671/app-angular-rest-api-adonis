@@ -5,6 +5,7 @@ import { UserCreationDialogComponent } from '../popup/user-creation-dialog.compo
 import { DeleteDialogComponent } from '../popup/delete-dialog.component';
 import { EquipmentDialogComponent } from '../popup/equipment-dialog.component';
 import { DeleteService } from '../popup/delete-dialogService';
+import { EquipmentDialogService } from '../popup/equipment-dialogService';
 import { ChangeDetectorRef } from '@angular/core';
 
 export interface Equipment {
@@ -34,6 +35,7 @@ export class AppComponent {
     private http: HttpClient, 
     private dialog: MatDialog,
     private deleteService: DeleteService,
+    private equipmentService: EquipmentDialogService,
     private cdr: ChangeDetectorRef) {
     this.isLoggedIn = !!localStorage.getItem('jwtToken');
       if (this.isLoggedIn) {
@@ -97,7 +99,7 @@ export class AppComponent {
     });
   }
 
-  addItem(data?: Equipment): void {
+  addAndEditItem(data?: Equipment): void {
     const dialogRef = this.dialog.open(EquipmentDialogComponent, {
       data: data || { id: null, uid: '', brand: '', equipment: '' }
     });
@@ -105,22 +107,18 @@ export class AppComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log('Item was added or edited');
-        this.fetchUserData();
-        this.cdr.detectChanges();
-      }
-    });
-  }
-
-  editItem(data?: Equipment): void {
-    const dialogRef = this.dialog.open(EquipmentDialogComponent, {
-      data: data || { id: null, uid: '', brand: '', equipment: '' }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log('Item was added or edited');
-        this.fetchUserData();
-        this.cdr.detectChanges();
+        
+        if (result.id) {
+          this.equipmentService.editEquipment(result).subscribe(() => {
+            this.fetchUserData(); 
+            this.cdr.detectChanges();
+          });
+        } else {
+          this.equipmentService.addEquipment(result).subscribe(() => {
+            this.fetchUserData(); 
+            this.cdr.detectChanges();
+          });
+        }
       }
     });
   }

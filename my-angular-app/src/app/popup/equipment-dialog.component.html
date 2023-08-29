@@ -1,21 +1,21 @@
 <h2 mat-dialog-title>{{data.id ? 'Edit' : 'Add'}} Equipment</h2>
 <p style="font-size:12px; padding-left: 24px;">Tous les champs doivent être remplis</p>
-<div mat-dialog-content>
+<div mat-dialog-content style="display: flex; flex-wrap: wrap; justify-content: space-between;">
     <ng-container *ngIf="data.id">
-        <mat-form-field>
+        <mat-form-field style="flex: 1;">
             <mat-label>ID</mat-label>
             <input matInput [(ngModel)]="data.id" disabled>
         </mat-form-field>
     </ng-container>
-    <mat-form-field>
+    <mat-form-field style="flex: 1;">
         <mat-label>UID</mat-label>
         <input matInput [(ngModel)]="data.uid">
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field style="flex: 1;">
         <mat-label>Brand</mat-label>
         <input matInput [(ngModel)]="data.brand">
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field style="flex: 1;">
         <mat-label>Equipment</mat-label>
         <input matInput [(ngModel)]="data.equipment">
     </mat-form-field>

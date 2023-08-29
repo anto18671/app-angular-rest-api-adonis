@@ -33,15 +33,7 @@ export class EquipmentDialogComponent {
   }
 
   onSave(): void {
-    if (this.data.id) {
-      this.equipmentService.editEquipment(this.data).subscribe(() => {
-        this.dialogRef.close(this.data);
-      });
-    } else {
-      this.equipmentService.addEquipment(this.data).subscribe(() => {
-        this.dialogRef.close(this.data);
-      });
-    }
+    this.dialogRef.close(this.data);
   }
 
   onNoClick(): void {
