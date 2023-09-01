@@ -7,4 +7,4 @@ J'ai utilisé les versions CLI d'Angular et d'Adonis.
 À améliorer:
 1) J'ai utilisé des tabulations de 2 espaces et de 4 espaces de manière aléatoire. Je devrais standardiser cela.
 2) Je n'ai pas utilisé les jetons JWT pour sécuriser les données de la table (par manque de temps).
-3) Mettre des messages d'erreur lorsque les inputs sont invalides (par manque de temps))
+3) Mettre des messages d'erreur lorsque les inputs sont invalides (par manque de temps)
